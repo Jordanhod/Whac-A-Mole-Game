@@ -1,0 +1,50 @@
+
+.logo {
+    position: absolute;
+    width: 150px;
+    animation: 6s start 1;
+    z-index: 100;
+    left: 850px;
+    top:200px;
+}
+.gameBoard {
+    width: 800px;
+    height: 500px;
+    border: 1px solid black;
+    display:flex;
+    background-color: green;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.scoreBoard {
+    float: right;
+    width: 200px;
+    height:100px;
+    border: 1px solid black;
+    text-align: center;
+    background-color: beige;
+}
+.hole {
+    margin: 100px 80px 0px 30px;
+    width: 150px;
+    height: 100px;
+    border: 1px solid black;
+    border-radius: 50%;
+    background-color: #641D1D;
+}
+@keyframes start {
+    0% {
+        top:0px;
+        width:850px;
+        left:0px;
+        }
+    20% {
+        top:0px;
+        width:850px;
+        left:0px;
+            }
+
+    100% {
+        width:150px;
+            }
+}

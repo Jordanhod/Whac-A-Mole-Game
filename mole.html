@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="mole.css">
+</head>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous">
+</script>
+<body>
+    <div class="scoreBoard"></div>
+    <img class="logo" src="http://www.gameartguppy.com/wp-content/uploads/2011/06/titlepage.png" alt="Whack a mole logo">
+    <div class="gameBoard">
+        <div class="hole" data-js="hole"></div>
+        <div class="hole" data-js="hole"></div>
+        <div class="hole" data-js="hole"></div>
+        <div class="hole" data-js="hole"></div>
+        <div class="hole" data-js="hole"></div>
+    </div>
+    <script>
+(function ($) {
+
+    let points = $('<p class="points"></p>');
+    let counter = 0;
+    $('.scoreBoard').append(points);
+    $(points).append(counter);
+    $(points).css('color','green').css('font-size', '50px').css('position','relative').css('top', '-30px');
+    let mole = "";
+    setTimeout (function(){ mole = $('<img src="mole.png" alt="whack a mole" />')},6000);
+
+    function whackGame() {
+        let random = Math.round((Math.random()*4)-0.3);
+        let holes = $('[data-js="hole"]')
+        let hole = $('[data-js="hole"]').eq(random);
+        setTimeout (function(){$(holes).empty()},5000);
+        $(hole).append(mole);
+        $(mole).css('width','150px').css('position','relative').css('top','-80px');
+        $(mole).on('click', function hit() {
+            $(this).remove();
+            counter += 50;
+            $(points).empty();
+            console.log(counter);
+            $(points).append(counter);
+            $(points).css('background-color','lightgreen');
+            setTimeout(function(){$(points).css('background-color','white')},500);
+        })
+        setTimeout (whackGame,(random+1)*500);
+    }
+
+     (whackGame(),10000);
+
+} (jQuery));
+    </script>
+</body>
+</html>
